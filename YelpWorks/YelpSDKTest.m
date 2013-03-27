@@ -9,10 +9,10 @@
 
 
 static NSString * const kOAuth1BaseURLString = @"http://api.yelp.com/v2/";
-static NSString * const kConsumerKeyString = @"CCWA9Km2t8lC7BFRVi2IkA";
-static NSString * const kConsumerSecretString = @"IRdQKHOEvJJGcuHz_j0zYsZaLg8";
-static NSString * const kTokenString = @"e7nKgPCRAIAAEts_q0YcbK_gKYDnJF5C";
-static NSString * const kTokenSecretString = @"CN8R7f1YA3l30GdQl1cQB7a-mvw";
+static NSString * const kConsumerKeyString = @"";
+static NSString * const kConsumerSecretString = @"";
+static NSString * const kTokenString = @"";
+static NSString * const kTokenSecretString = @"";
 
 
 @implementation YelpSDKTest
