@@ -10,6 +10,7 @@
 
 #import "AFNetworkActivityIndicatorManager.h"
 
+#import "YelpSDKTest.h"
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -30,6 +31,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = self.navigationController;
     [self.window makeKeyAndVisible];
+    
+    [[YelpSDKTest sharedClient] authorizeWorks];
     
     return YES;
 }

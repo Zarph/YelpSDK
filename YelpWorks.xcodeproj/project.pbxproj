@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5560DFAA9F4144DF83F4F428 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86503B76AC1544E6859486DB /* libPods.a */; };
 		AACEE2CA1702806B009D2766 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEE2C91702806B009D2766 /* UIKit.framework */; };
 		AACEE2CC1702806B009D2766 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEE2CB1702806B009D2766 /* Foundation.framework */; };
 		AACEE2CE1702806B009D2766 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEE2CD1702806B009D2766 /* CoreGraphics.framework */; };
@@ -21,9 +22,12 @@
 		AACEE2E81702806B009D2766 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AACEE2E71702806B009D2766 /* Default-568h@2x.png */; };
 		AACEE2EC1702806B009D2766 /* YelpWorks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AACEE2EA1702806B009D2766 /* YelpWorks.xcdatamodeld */; };
 		AACEE2EF1702806B009D2766 /* YelpWorksIncrementalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AACEE2EE1702806B009D2766 /* YelpWorksIncrementalStore.m */; };
+		AACEE2F7170280E2009D2766 /* YelpSDKTest.m in Sources */ = {isa = PBXBuildFile; fileRef = AACEE2F6170280E2009D2766 /* YelpSDKTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3CBCB652657D4FEAAABD7271 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		86503B76AC1544E6859486DB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACEE2C61702806B009D2766 /* YelpWorks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YelpWorks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACEE2C91702806B009D2766 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AACEE2CB1702806B009D2766 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -44,6 +48,8 @@
 		AACEE2EB1702806B009D2766 /* YelpWorks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YelpWorks.xcdatamodel; sourceTree = "<group>"; };
 		AACEE2ED1702806B009D2766 /* YelpWorksIncrementalStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = YelpWorksIncrementalStore.h; path = Classes/YelpWorksIncrementalStore.h; sourceTree = "<group>"; };
 		AACEE2EE1702806B009D2766 /* YelpWorksIncrementalStore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = YelpWorksIncrementalStore.m; path = Classes/YelpWorksIncrementalStore.m; sourceTree = "<group>"; };
+		AACEE2F5170280E2009D2766 /* YelpSDKTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpSDKTest.h; sourceTree = "<group>"; };
+		AACEE2F6170280E2009D2766 /* YelpSDKTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpSDKTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +61,7 @@
 				AACEE2CC1702806B009D2766 /* Foundation.framework in Frameworks */,
 				AACEE2CE1702806B009D2766 /* CoreGraphics.framework in Frameworks */,
 				AACEE2D01702806B009D2766 /* CoreData.framework in Frameworks */,
+				5560DFAA9F4144DF83F4F428 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +74,7 @@
 				AACEE2D11702806B009D2766 /* YelpWorks */,
 				AACEE2C81702806B009D2766 /* Frameworks */,
 				AACEE2C71702806B009D2766 /* Products */,
+				3CBCB652657D4FEAAABD7271 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,6 +93,7 @@
 				AACEE2CB1702806B009D2766 /* Foundation.framework */,
 				AACEE2CD1702806B009D2766 /* CoreGraphics.framework */,
 				AACEE2CF1702806B009D2766 /* CoreData.framework */,
+				86503B76AC1544E6859486DB /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -123,6 +132,8 @@
 				AACEE2D81702806B009D2766 /* YelpWorksAPIClient.m */,
 				AACEE2ED1702806B009D2766 /* YelpWorksIncrementalStore.h */,
 				AACEE2EE1702806B009D2766 /* YelpWorksIncrementalStore.m */,
+				AACEE2F5170280E2009D2766 /* YelpSDKTest.h */,
+				AACEE2F6170280E2009D2766 /* YelpSDKTest.m */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -145,6 +156,7 @@
 				AACEE2C21702806B009D2766 /* Sources */,
 				AACEE2C31702806B009D2766 /* Frameworks */,
 				AACEE2C41702806B009D2766 /* Resources */,
+				349BEE64C7A141678F3D84C2 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,6 +208,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		349BEE64C7A141678F3D84C2 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AACEE2C21702806B009D2766 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -206,6 +235,7 @@
 				AACEE2E21702806B009D2766 /* AppDelegate.m in Sources */,
 				AACEE2EC1702806B009D2766 /* YelpWorks.xcdatamodeld in Sources */,
 				AACEE2EF1702806B009D2766 /* YelpWorksIncrementalStore.m in Sources */,
+				AACEE2F7170280E2009D2766 /* YelpSDKTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +311,7 @@
 		};
 		AACEE2F31702806B009D2766 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CBCB652657D4FEAAABD7271 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YelpWorks/YelpWorks-Prefix.pch";
@@ -292,6 +323,7 @@
 		};
 		AACEE2F41702806B009D2766 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CBCB652657D4FEAAABD7271 /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YelpWorks/YelpWorks-Prefix.pch";
@@ -320,6 +352,7 @@
 				AACEE2F41702806B009D2766 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
