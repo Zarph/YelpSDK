@@ -36,12 +36,39 @@ static NSString * const kTokenSecretString = @"";
         
         NSLog(@"SUCCESS");
         
+        [self getPath:@"http://api.yelp.com/v2/search?term=restaurants&location=new%20york" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            NSLog(@"SEARCH REQUEST");
+            NSLog(@"Response object: %@", responseObject);
+            //Complete with delegate call
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            
+        }];
+        
+        
     } failure:^(NSError *error) {
-        
-        
-        
+    
     }];
+    
+    
 }
+
+
+//helpers
+- (void)getPath:(NSString *)path
+     parameters:(NSDictionary *)parameters
+        success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+	NSMutableURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters];
+    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
+    [self enqueueHTTPRequestOperation:operation];
+}
+
 
 
 @end
