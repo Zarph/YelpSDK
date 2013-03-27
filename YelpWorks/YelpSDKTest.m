@@ -9,10 +9,10 @@
 
 
 static NSString * const kOAuth1BaseURLString = @"http://api.yelp.com/v2/";
-static NSString * const kConsumerKeyString = @"";
-static NSString * const kConsumerSecretString = @"";
-static NSString * const kTokenString = @"";
-static NSString * const kTokenSecretString = @"-mvw";
+static NSString * const kConsumerKeyString = @"CCWA9Km2t8lC7BFRVi2IkA";
+static NSString * const kConsumerSecretString = @"IRdQKHOEvJJGcuHz_j0zYsZaLg8";
+static NSString * const kTokenString = @"e7nKgPCRAIAAEts_q0YcbK_gKYDnJF5C";
+static NSString * const kTokenSecretString = @"CN8R7f1YA3l30GdQl1cQB7a-mvw";
 
 
 @implementation YelpSDKTest
@@ -29,14 +29,28 @@ static NSString * const kTokenSecretString = @"-mvw";
     return _sharedClient;
 }
 
--(void)authorizeWorks{
+//General Search.
+
+-(void)getSearchWithTerm:(NSString *)term AndLocation:(NSString *)location AndParams:(NSDictionary *)params AndWithDelegate:(NSObject <YelpDelegate> *)delegate{
+    
     AFOAuth1Token *token = [[AFOAuth1Token alloc] initWithKey:kTokenString secret:kTokenSecretString session:nil expiration:nil renewable:NO];
     
     [self acquireOAuthAccessTokenWithPath:@"http://api.yelp.com/v2/search?term=restaurants&location=new%20york" requestToken:token accessMethod:@"GET" success:^(AFOAuth1Token *accessToken) {
         
         NSLog(@"SUCCESS");
         
-        [self getPath:@"http://api.yelp.com/v2/search?term=restaurants&location=new%20york" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSMutableDictionary *mutableParameters = [NSDictionary dictionary];
+        
+        if (params) 
+            mutableParameters = [NSMutableDictionary dictionaryWithDictionary:params];
+            
+        
+        [mutableParameters setValue:term forKey:@"term"];
+        [mutableParameters setValue:location forKey:@"location"];
+        
+        NSDictionary *parameters = [NSDictionary dictionaryWithDictionary:mutableParameters];
+
+        [self getPath:@"http://api.yelp.com/v2/search" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             NSLog(@"SEARCH REQUEST");
             NSLog(@"Response object: %@", responseObject);
@@ -60,20 +74,191 @@ static NSString * const kTokenSecretString = @"-mvw";
     
 }
 
-
-//helpers
-- (void)getPath:(NSString *)path
-     parameters:(NSDictionary *)parameters
-        success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
-        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
-{
-	NSMutableURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters];
-   // [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+-(void)getSearchWithTerm:(NSString *)term AndBounds:(NSDictionary *)boundsParams AndParams:(NSDictionary *)params AndWithDelegate:(NSObject <YelpDelegate> *)delegate{
     
-    AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
-    [self enqueueHTTPRequestOperation:operation];
+    AFOAuth1Token *token = [[AFOAuth1Token alloc] initWithKey:kTokenString secret:kTokenSecretString session:nil expiration:nil renewable:NO];
+    
+    [self acquireOAuthAccessTokenWithPath:@"http://api.yelp.com/v2/search?term=restaurants&location=new%20york" requestToken:token accessMethod:@"GET" success:^(AFOAuth1Token *accessToken) {
+        
+        NSLog(@"SUCCESS");
+        
+        NSMutableDictionary *mutableParameters = [NSDictionary dictionary];
+        
+        if (params)
+            mutableParameters = [NSMutableDictionary dictionaryWithDictionary:params];
+        
+        
+        [mutableParameters setValue:term forKey:@"term"];
+        
+        NSString *boundsString = [NSString stringWithFormat:@"%@,%@|%@,%@", [boundsParams objectForKey:@"sw_latitude"],[boundsParams objectForKey:@"sw_longitude"],[boundsParams objectForKey:@"ne_latitude"],[boundsParams objectForKey:@"ne_longitude"]];
+        
+        [mutableParameters setValue:boundsString forKey:@"bounds"];
+        
+        NSDictionary *parameters = [NSDictionary dictionaryWithDictionary:mutableParameters];
+        
+        [self getPath:@"http://api.yelp.com/v2/search" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            NSLog(@"SEARCH REQUEST");
+            NSLog(@"Response object: %@", responseObject);
+            
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+            
+            NSLog(@"Response array: %@", json);
+            
+            //Complete with delegate call
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            
+        }];
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
 }
 
+-(void)getSearchWithTerm:(NSString *)term AndCoordinates:(NSDictionary *)coordParams AndParams:(NSDictionary *)params AndWithDelegate:(NSObject <YelpDelegate> *)delegate{
+    
+    AFOAuth1Token *token = [[AFOAuth1Token alloc] initWithKey:kTokenString secret:kTokenSecretString session:nil expiration:nil renewable:NO];
+    
+    [self acquireOAuthAccessTokenWithPath:@"http://api.yelp.com/v2/search?term=restaurants&location=new%20york" requestToken:token accessMethod:@"GET" success:^(AFOAuth1Token *accessToken) {
+        
+        NSLog(@"SUCCESS");
+        
+        NSMutableDictionary *mutableParameters = [NSDictionary dictionary];
+        
+        if (params)
+            mutableParameters = [NSMutableDictionary dictionaryWithDictionary:params];
+        
+        
+        [mutableParameters setValue:term forKey:@"term"];
+        
+        NSMutableArray *locationArray = [NSMutableArray array];
+        
+        [locationArray addObject:[coordParams objectForKey:@"latitude"]];
+        [locationArray addObject:[coordParams objectForKey:@"longitude"]];
 
+        if ([coordParams objectForKey:@"accuracy"])
+            [locationArray addObject:[coordParams objectForKey:@"accuracy"]];
+        if ([coordParams objectForKey:@"altitude"])
+            [locationArray addObject:[coordParams objectForKey:@"altitude"]];
+        if ([coordParams objectForKey:@"altitude_accuracy"])
+                [locationArray addObject:[coordParams objectForKey:@"altitude_accuracy"]];
+        
+        NSString *coordinateString = [locationArray componentsJoinedByString:@","];
+        
+        [mutableParameters setValue:coordinateString forKey:@"ll"];
+        
+        NSDictionary *parameters = [NSDictionary dictionaryWithDictionary:mutableParameters];
+        
+        [self getPath:@"http://api.yelp.com/v2/search" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            NSLog(@"SEARCH REQUEST");
+            NSLog(@"Response object: %@", responseObject);
+            
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+            
+            NSLog(@"Response array: %@", json);
+            
+            //Complete with delegate call
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            
+        }];
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+-(void)getSearchWithTerm:(NSString *)term AndLocation:(NSString *)location AndLatitude:(NSString *)latitude AndLongitude:(NSString *)longitude AndParams:(NSDictionary *)params AndWithDelegate:(NSObject <YelpDelegate> *)delegate{
+    
+    AFOAuth1Token *token = [[AFOAuth1Token alloc] initWithKey:kTokenString secret:kTokenSecretString session:nil expiration:nil renewable:NO];
+    
+    [self acquireOAuthAccessTokenWithPath:@"http://api.yelp.com/v2/search?term=restaurants&location=new%20york" requestToken:token accessMethod:@"GET" success:^(AFOAuth1Token *accessToken) {
+        
+        NSLog(@"SUCCESS");
+        
+        NSMutableDictionary *mutableParameters = [NSDictionary dictionary];
+        
+        if (params)
+            mutableParameters = [NSMutableDictionary dictionaryWithDictionary:params];
+        
+        
+        [mutableParameters setValue:term forKey:@"term"];
+        
+        NSString *coordinateString = [NSString stringWithFormat:@"%@,%@", latitude, longitude];
+        
+        [mutableParameters setValue:coordinateString forKey:@"cll"];
+        
+        NSDictionary *parameters = [NSDictionary dictionaryWithDictionary:mutableParameters];
+        
+        [self getPath:@"http://api.yelp.com/v2/search" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            NSLog(@"SEARCH REQUEST");
+            NSLog(@"Response object: %@", responseObject);
+            
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+            
+            NSLog(@"Response array: %@", json);
+            
+            //Complete with delegate call
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            
+        }];
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+-(void)getBusinessWithBusinessId:(NSString *)businessId AndParams:(NSDictionary *)params AndWithDelegate:(NSObject <YelpDelegate> *)delegate{
+    
+    AFOAuth1Token *token = [[AFOAuth1Token alloc] initWithKey:kTokenString secret:kTokenSecretString session:nil expiration:nil renewable:NO];
+    
+    [self acquireOAuthAccessTokenWithPath:@"http://api.yelp.com/v2/search?term=restaurants&location=new%20york" requestToken:token accessMethod:@"GET" success:^(AFOAuth1Token *accessToken) {
+        
+        NSLog(@"SUCCESS");
+        
+        NSMutableDictionary *mutableParameters = [NSDictionary dictionary];
+        
+        if (params)
+            mutableParameters = [NSMutableDictionary dictionaryWithDictionary:params];
+            
+        NSDictionary *parameters = [NSDictionary dictionaryWithDictionary:mutableParameters];
+        
+        NSString *path = [NSString stringWithFormat:@"http://api.yelp.com/v2/business/%@", businessId];
+        
+        [self getPath:path parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            
+            NSLog(@"SEARCH REQUEST");
+            NSLog(@"Response object: %@", responseObject);
+            
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+            
+            NSLog(@"Response array: %@", json);
+            
+            //Complete with delegate call
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            
+        }];
+        
+        
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
+}
 
 @end
