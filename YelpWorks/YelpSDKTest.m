@@ -12,7 +12,7 @@ static NSString * const kOAuth1BaseURLString = @"http://api.yelp.com/v2/";
 static NSString * const kConsumerKeyString = @"";
 static NSString * const kConsumerSecretString = @"";
 static NSString * const kTokenString = @"";
-static NSString * const kTokenSecretString = @"";
+static NSString * const kTokenSecretString = @"-mvw";
 
 
 @implementation YelpSDKTest
@@ -40,6 +40,11 @@ static NSString * const kTokenSecretString = @"";
             
             NSLog(@"SEARCH REQUEST");
             NSLog(@"Response object: %@", responseObject);
+            
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:responseObject options:kNilOptions error:nil];
+            
+            NSLog(@"Response array: %@", json);
+
             //Complete with delegate call
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -63,7 +68,7 @@ static NSString * const kTokenSecretString = @"";
         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
 	NSMutableURLRequest *request = [self requestWithMethod:@"GET" path:path parameters:parameters];
-    [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
+   // [request setValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     AFHTTPRequestOperation *operation = [self HTTPRequestOperationWithRequest:request success:success failure:failure];
     [self enqueueHTTPRequestOperation:operation];
