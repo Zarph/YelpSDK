@@ -12,7 +12,7 @@ static NSString * const kOAuth1BaseURLString = @"http://api.yelp.com/v2/";
 static NSString * const kConsumerKeyString = @"";
 static NSString * const kConsumerSecretString = @"";
 static NSString * const kTokenString = @"";
-static NSString * const kTokenSecretString = @"";
+static NSString * const kTokenSecretString = @"-mvw";
 
 
 @implementation YelpSDKTest
@@ -39,7 +39,7 @@ static NSString * const kTokenSecretString = @"";
         
         NSLog(@"SUCCESS");
         
-        NSMutableDictionary *mutableParameters = [NSDictionary dictionary];
+        NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionary];
         
         if (params) 
             mutableParameters = [NSMutableDictionary dictionaryWithDictionary:params];
@@ -82,7 +82,7 @@ static NSString * const kTokenSecretString = @"";
         
         NSLog(@"SUCCESS");
         
-        NSMutableDictionary *mutableParameters = [NSDictionary dictionary];
+        NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionary];
         
         if (params)
             mutableParameters = [NSMutableDictionary dictionaryWithDictionary:params];
@@ -128,7 +128,7 @@ static NSString * const kTokenSecretString = @"";
         
         NSLog(@"SUCCESS");
         
-        NSMutableDictionary *mutableParameters = [NSDictionary dictionary];
+        NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionary];
         
         if (params)
             mutableParameters = [NSMutableDictionary dictionaryWithDictionary:params];
@@ -184,13 +184,14 @@ static NSString * const kTokenSecretString = @"";
         
         NSLog(@"SUCCESS");
         
-        NSMutableDictionary *mutableParameters = [NSDictionary dictionary];
+        NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionary];
         
         if (params)
             mutableParameters = [NSMutableDictionary dictionaryWithDictionary:params];
         
         
         [mutableParameters setValue:term forKey:@"term"];
+        [mutableParameters setValue:location forKey:@"location"];
         
         NSString *coordinateString = [NSString stringWithFormat:@"%@,%@", latitude, longitude];
         
@@ -228,7 +229,7 @@ static NSString * const kTokenSecretString = @"";
         
         NSLog(@"SUCCESS");
         
-        NSMutableDictionary *mutableParameters = [NSDictionary dictionary];
+        NSMutableDictionary *mutableParameters = [NSMutableDictionary dictionary];
         
         if (params)
             mutableParameters = [NSMutableDictionary dictionaryWithDictionary:params];
