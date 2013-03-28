@@ -11,6 +11,8 @@
 #import "AFNetworkActivityIndicatorManager.h"
 
 #import "YelpSDKTest.h"
+
+#import "RootViewController.h"
 @implementation AppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -25,15 +27,16 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     
-    UIViewController *viewController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
-    self.navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+   /* UIViewController *viewController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];*/
+    
+    RootViewController *viewController = [[RootViewController alloc] init];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = self.navigationController;
+    self.window.rootViewController = viewController;
     [self.window makeKeyAndVisible];
     
-    [[YelpSDKTest sharedClient] authorizeWorks];
-    
+   
     return YES;
 }
 

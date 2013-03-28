@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5560DFAA9F4144DF83F4F428 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 86503B76AC1544E6859486DB /* libPods.a */; };
+		AABFA4461703C7CC00244577 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AABFA4451703C7CC00244577 /* RootViewController.m */; };
 		AACEE2CA1702806B009D2766 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEE2C91702806B009D2766 /* UIKit.framework */; };
 		AACEE2CC1702806B009D2766 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEE2CB1702806B009D2766 /* Foundation.framework */; };
 		AACEE2CE1702806B009D2766 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACEE2CD1702806B009D2766 /* CoreGraphics.framework */; };
@@ -28,6 +29,8 @@
 /* Begin PBXFileReference section */
 		3CBCB652657D4FEAAABD7271 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		86503B76AC1544E6859486DB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AABFA4441703C7CC00244577 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		AABFA4451703C7CC00244577 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		AACEE2C61702806B009D2766 /* YelpWorks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YelpWorks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AACEE2C91702806B009D2766 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		AACEE2CB1702806B009D2766 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -104,6 +107,8 @@
 				AACEE2D21702806B009D2766 /* Podfile */,
 				AACEE2E01702806B009D2766 /* AppDelegate.h */,
 				AACEE2E11702806B009D2766 /* AppDelegate.m */,
+				AABFA4441703C7CC00244577 /* RootViewController.h */,
+				AABFA4451703C7CC00244577 /* RootViewController.m */,
 				AACEE2D61702806B009D2766 /* Networking */,
 				AACEE2E91702806B009D2766 /* Models */,
 				AACEE2D41702806B009D2766 /* Supporting Files */,
@@ -236,6 +241,7 @@
 				AACEE2EC1702806B009D2766 /* YelpWorks.xcdatamodeld in Sources */,
 				AACEE2EF1702806B009D2766 /* YelpWorksIncrementalStore.m in Sources */,
 				AACEE2F7170280E2009D2766 /* YelpSDKTest.m in Sources */,
+				AABFA4461703C7CC00244577 /* RootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
