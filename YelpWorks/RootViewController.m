@@ -39,6 +39,10 @@
     
     //  [[YelpSDKTest sharedClient] getSearchWithTerm:@"food" AndLocation:@"new york" AndParams:params AndWithDelegate:nil];
     
+  //  NSDictionary* coordParams = [NSDictionary dictionaryWithObjectsAndKeys:@"37.788022", @"latitude", @"-122.399797", @"longitude", nil];
+    
+   // [[YelpSDKTest sharedClient] getSearchWithTerm:@"bar" AndCoordinates:coordParams AndParams:params AndWithDelegate:nil];
+    
 	// Do any additional setup after loading the view.
 }
 
